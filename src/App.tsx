@@ -34,6 +34,7 @@ const VIDEOS: Video[] = [
   { id: 19, title: "BEYOND THE CHARTS: PURA VIDA!!!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=GLcesi9gtgQ", description: "" },
   { id: 20, title: "BEYOND THE CHARTS: ALMOST LOST $50,000", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d7CLUxeh5Fg", description: "" },
   { id: 21, title: "BEYOND THE CHARTS: ARIZONA CRAZINESS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=IUnUixZqKRc", description: "" },
+  { id: 22, title: "FreshPrinceCeo Exotic Car Photoshoot Movie!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=tqpOij01I4I", description: "" },
 ];
 
 const PAGE_SIZE = 12;
