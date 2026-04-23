@@ -30,6 +30,10 @@ const VIDEOS: Video[] = [
   { id: 15, title: "¡Haciendo Millones Aprovechando Instagram! con Josue Pena | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=RqUuG24zmc8", description: "" },
   { id: 16, title: "Hicimos un podcast en una Cybertruck con Tanner Chidester | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=QkQKWvkXr7Q", description: "" },
   { id: 17, title: "Hicimos un podcast en un Rolls Royce | Con Luke Lintz | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=ZLlAJmzRjVQ", description: "" },
+  { id: 18, title: "BEYOND THE CHARTS: SPENT THE DAY ON A CIGARETTE RACING BOAT IN THE KEYS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d0dR-FXDBwI", description: "" },
+  { id: 19, title: "BEYOND THE CHARTS: PURA VIDA!!!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=GLcesi9gtgQ", description: "" },
+  { id: 20, title: "BEYOND THE CHARTS: ALMOST LOST $50,000", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d7CLUxeh5Fg", description: "" },
+  { id: 21, title: "BEYOND THE CHARTS: ARIZONA CRAZINESS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=IUnUixZqKRc", description: "" },
 ];
 
 const PAGE_SIZE = 12;
