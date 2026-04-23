@@ -25,6 +25,8 @@ const VIDEOS: Video[] = [
 
   { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
   { id: 12, title: "Millionaire at the age of 18! with Dan Dasilva | Podcast in Cars", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=5bcDN46FSnc", description: "" },
+  { id: 13, title: "Ariel Joyeria nos Enseña el lado que todo Negocio Debería tener", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=aF0CRM2Sq_4", description: "" },
+  { id: 14, title: "Experta en Salud Natural: Qué Comer, Cómo Sanar tu Cuerpo y los Hábitos Obligatorios para Vivir Mejor", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=7bK_QNtcCVk", description: "" },
 ];
 
 const PAGE_SIZE = 12;
