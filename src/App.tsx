@@ -22,7 +22,7 @@ const VIDEOS: Video[] = [
   { id: 7, title: "VIP Access with Birdman: Drake and Lil Wayne Concert", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=qHNAnXuP55A", description: "" },
   { id: 8, title: "Network with Like-Minded Entrepreneurs in Miami with Eric Spofford's Inner Circle", category: "Event Recaps", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=PgAhAnHDK6c", description: "" },
   { id: 9, title: "Featured Video", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=fZwy0-sHjOA", description: "" },
-  { id: 10, title: "Featured Video 2", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=nCNv6xvj460", description: "Appearance" },
+
   { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
 ];
 
