@@ -35,6 +35,8 @@ const VIDEOS: Video[] = [
   { id: 20, title: "BEYOND THE CHARTS: ALMOST LOST $50,000", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d7CLUxeh5Fg", description: "" },
   { id: 21, title: "BEYOND THE CHARTS: ARIZONA CRAZINESS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=IUnUixZqKRc", description: "" },
   { id: 22, title: "FreshPrinceCeo Exotic Car Photoshoot Movie!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=tqpOij01I4I", description: "" },
+  { id: 23, title: "Was deine Selbstzweifel dir wirklich sagen wollen", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=KGtFjuEukAA", description: "" },
+  { id: 24, title: "1.000 Hate Kommentare bis zum Erfolg", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=zn23tp_SLvs", description: "" },
 ];
 
 const PAGE_SIZE = 12;
