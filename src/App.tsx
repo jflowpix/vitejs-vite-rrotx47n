@@ -27,6 +27,9 @@ const VIDEOS: Video[] = [
   { id: 12, title: "Millionaire at the age of 18! with Dan Dasilva | Podcast in Cars", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=5bcDN46FSnc", description: "" },
   { id: 13, title: "Ariel Joyeria nos Enseña el lado que todo Negocio Debería tener", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=aF0CRM2Sq_4", description: "" },
   { id: 14, title: "Experta en Salud Natural: Qué Comer, Cómo Sanar tu Cuerpo y los Hábitos Obligatorios para Vivir Mejor", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=7bK_QNtcCVk", description: "" },
+  { id: 15, title: "¡Haciendo Millones Aprovechando Instagram! con Josue Pena | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=RqUuG24zmc8", description: "" },
+  { id: 16, title: "Hicimos un podcast en una Cybertruck con Tanner Chidester | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=QkQKWvkXr7Q", description: "" },
+  { id: 17, title: "Hicimos un podcast en un Rolls Royce | Con Luke Lintz | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=ZLlAJmzRjVQ", description: "" },
 ];
 
 const PAGE_SIZE = 12;
