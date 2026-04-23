@@ -37,6 +37,8 @@ const VIDEOS: Video[] = [
   { id: 22, title: "FreshPrinceCeo Exotic Car Photoshoot Movie!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=tqpOij01I4I", description: "" },
   { id: 23, title: "Was deine Selbstzweifel dir wirklich sagen wollen", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=KGtFjuEukAA", description: "" },
   { id: 24, title: "1.000 Hate Kommentare bis zum Erfolg", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=zn23tp_SLvs", description: "" },
+  { id: 25, title: "How To Optimize Your Amazon PPC Campaigns (In 5 Minutes)", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=LjCxijC2B0M", description: "" },
+  { id: 26, title: "The Amazon LTV Strategy Behind My $1M Subscription Revenue", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=jRj0GXRVVOU", description: "" },
 ];
 
 const PAGE_SIZE = 12;
