@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const CATEGORIES: string[] = ["All", "YouTube / Long Format", "Short Form", "Event Recaps", "Talking Head", "Documentaries", "Production"];
 const YOUTUBE_SUBCATEGORIES: string[] = ["All", "Vlog", "Podcast", "Talking Head"];
+const PRODUCTION_SUBCATEGORIES: string[] = ["All", "Music Videos", "Production Reels", "BTS"];
 
 interface Video {
   id: number;
@@ -39,6 +40,8 @@ const VIDEOS: Video[] = [
   { id: 24, title: "1.000 Hate Kommentare bis zum Erfolg", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=zn23tp_SLvs", description: "" },
   { id: 25, title: "How To Optimize Your Amazon PPC Campaigns (In 5 Minutes)", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=LjCxijC2B0M", description: "" },
   { id: 26, title: "The Amazon LTV Strategy Behind My $1M Subscription Revenue", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=jRj0GXRVVOU", description: "" },
+  { id: 27, title: "Kodak Black - Better Run (Day Is Done)", category: "Production", subcategory: "Music Videos", videoUrl: "https://www.youtube.com/watch?v=D7AzdoBj_rs", description: "" },
+  { id: 28, title: "Real Boston Richey ft. Moneybagg Yo - Certified Dripper 2 (Official Video)", category: "Production", subcategory: "Music Videos", videoUrl: "https://www.youtube.com/watch?v=VHy7bUIKhJA", description: "" },
 ];
 
 const PAGE_SIZE = 12;
@@ -80,9 +83,10 @@ export default function JFlowpix() {
   const [modalVideo, setModalVideo] = useState<Video | null>(null);
 
   const isYoutubeCat = activeCategory === "YouTube / Long Format";
+  const isProductionCat = activeCategory === "Production";
 
   const filteredByCategory = activeCategory === "All" ? VIDEOS : VIDEOS.filter((v) => v.category === activeCategory);
-  const filtered = isYoutubeCat && activeSubcat !== "All"
+  const filtered = (isYoutubeCat || isProductionCat) && activeSubcat !== "All"
     ? filteredByCategory.filter((v) => v.subcategory === activeSubcat)
     : filteredByCategory;
   const visible = filtered.slice(0, visibleCount);
@@ -106,6 +110,10 @@ export default function JFlowpix() {
   const subcatCount = (sub: string) => sub === "All"
     ? VIDEOS.filter((v) => v.category === "YouTube / Long Format").length
     : VIDEOS.filter((v) => v.category === "YouTube / Long Format" && v.subcategory === sub).length;
+
+  const productionSubcatCount = (sub: string) => sub === "All"
+    ? VIDEOS.filter((v) => v.category === "Production").length
+    : VIDEOS.filter((v) => v.category === "Production" && v.subcategory === sub).length;
 
   function VideoCard({ video }: { video: Video }) {
     const thumb = getThumbnail(video.videoUrl);
@@ -277,6 +285,17 @@ export default function JFlowpix() {
           {YOUTUBE_SUBCATEGORIES.map((sub) => (
             <button key={sub} className={`subcat-btn ${activeSubcat === sub ? "active" : ""}`} onClick={() => { setActiveSubcat(sub); setVisibleCount(PAGE_SIZE); }}>
               {sub} <span className="subcat-count">{subcatCount(sub)}</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {isProductionCat && (
+        <div className="subcat-bar">
+          <span className="subcat-label">Type</span>
+          {PRODUCTION_SUBCATEGORIES.map((sub) => (
+            <button key={sub} className={`subcat-btn ${activeSubcat === sub ? "active" : ""}`} onClick={() => { setActiveSubcat(sub); setVisibleCount(PAGE_SIZE); }}>
+              {sub} <span className="subcat-count">{productionSubcatCount(sub)}</span>
             </button>
           ))}
         </div>
