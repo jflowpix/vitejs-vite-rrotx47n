@@ -24,6 +24,7 @@ const VIDEOS: Video[] = [
   { id: 9, title: "Featured Video", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=fZwy0-sHjOA", description: "" },
 
   { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
+  { id: 12, title: "Millionaire at the age of 18! with Dan Dasilva | Podcast in Cars", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=5bcDN46FSnc", description: "" },
 ];
 
 const PAGE_SIZE = 12;
