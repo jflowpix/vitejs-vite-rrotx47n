@@ -167,7 +167,7 @@ export default function JFlowpix() {
         .hero-tag { display:inline-flex; align-items:center; gap:8px; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#CC0000; margin-bottom:28px; }
         .hero-tag::before { content:''; width:24px; height:1px; background:#CC0000; }
         .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(72px,12vw,160px); line-height:0.85; }
-        .hero-title .dim { color:#222; }
+        .hero-title .dim { color:#666; }
         .hero-title .red { color:#CC0000; }
         .hero-desc { margin-top:28px; font-size:13px; color:#555; max-width:400px; line-height:1.7; }
         .hero-stats { margin-top:40px; display:flex; gap:48px; flex-wrap:wrap; padding-top:32px; border-top:1px solid rgba(255,255,255,0.05); }
