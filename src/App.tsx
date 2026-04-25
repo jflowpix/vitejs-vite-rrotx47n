@@ -16,12 +16,13 @@ interface Video {
 const VIDEOS: Video[] = [
   { id: 1, title: "From Target Employee to MILLIONAIRE at only 30 Years Old!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=xAfQTDoXlAY", description: "" },
   { id: 2, title: "My RICH FRIENDS are worth over a HUNDRED MILLION DOLLARS | World's Largest Lambo Rally", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=UVyU07CqywQ", description: "" },
-  { id: 3, title: "Inner Circle Mastermind: How to Build Community and Network in Business", category: "Event Recaps", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=DPuktVmEmw8", description: "" },
-  { id: 4, title: "Eric Spofford's Miami Mastermind: Achieving Entrepreneurial Success", category: "Event Recaps", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=-Yd64vAqi7c", description: "" },
+  { id: 3, title: "Inner Circle Mastermind: How to Build Community and Network in Business", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=DPuktVmEmw8", description: "" },
+  { id: 4, title: "Eric Spofford's Miami Mastermind: Achieving Entrepreneurial Success", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=-Yd64vAqi7c", description: "" },
   { id: 5, title: "How to Invest in Section 8 Housing for Financial Freedom", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=NjswfV1fuLw", description: "" },
-  { id: 6, title: "Eric Spofford's Limitless Arena 2024 Keynote", category: "Event Recaps", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=lg7n2Qd9QQA", description: "" },
+  { id: 6, title: "Eric Spofford's Limitless Arena 2024 Keynote", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=lg7n2Qd9QQA", description: "" },
   { id: 7, title: "VIP Access with Birdman: Drake and Lil Wayne Concert", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=qHNAnXuP55A", description: "" },
-  { id: 8, title: "Network with Like-Minded Entrepreneurs in Miami with Eric Spofford's Inner Circle", category: "Event Recaps", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=PgAhAnHDK6c", description: "" },
+  { id: 8, title: "Network with Like-Minded Entrepreneurs in Miami with Eric Spofford's Inner Circle", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=PgAhAnHDK6c", description: "" },
+  { id: 29, title: "Event Recap", category: "Event Recaps", subcategory: null, videoUrl: "https://www.instagram.com/reel/DWuKvgVD-Sl/", description: "Instagram Reel" },
   { id: 9, title: "Featured Video", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=fZwy0-sHjOA", description: "" },
 
   { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
