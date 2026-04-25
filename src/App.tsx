@@ -1,50 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const SUPABASE_URL = "https://gmaormidiayceqtkfnxw.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtYW9ybWlkaWF5Y2VxdGtmbnh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwOTAxNzQsImV4cCI6MjA5MjY2NjE3NH0.ymBXRpjdEiF6eWWcGQl2vEvl7NBQarnl3lXr_uQz0ec";
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const CATEGORIES: string[] = ["All", "YouTube / Long Format", "Short Form", "Event Recaps", "Talking Head", "Documentaries", "Production"];
 const YOUTUBE_SUBCATEGORIES: string[] = ["All", "Vlog", "Podcast", "Talking Head"];
 const PRODUCTION_SUBCATEGORIES: string[] = ["All", "Music Videos", "Production Reels", "BTS"];
+const ADMIN_PASSWORD = "jflowpix2026";
+const PAGE_SIZE = 12;
 
 interface Video {
   id: number;
   title: string;
   category: string;
   subcategory: string | null;
-  videoUrl: string;
+  video_url: string;
   description: string;
 }
-
-const VIDEOS: Video[] = [
-  { id: 1, title: "From Target Employee to MILLIONAIRE at only 30 Years Old!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=xAfQTDoXlAY", description: "" },
-  { id: 2, title: "My RICH FRIENDS are worth over a HUNDRED MILLION DOLLARS | World's Largest Lambo Rally", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=UVyU07CqywQ", description: "" },
-  { id: 3, title: "Inner Circle Mastermind: How to Build Community and Network in Business", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=DPuktVmEmw8", description: "" },
-  { id: 4, title: "Eric Spofford's Miami Mastermind: Achieving Entrepreneurial Success", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=-Yd64vAqi7c", description: "" },
-  { id: 5, title: "How to Invest in Section 8 Housing for Financial Freedom", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=NjswfV1fuLw", description: "" },
-  { id: 6, title: "Eric Spofford's Limitless Arena 2024 Keynote", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=lg7n2Qd9QQA", description: "" },
-  { id: 7, title: "VIP Access with Birdman: Drake and Lil Wayne Concert", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=qHNAnXuP55A", description: "" },
-  { id: 8, title: "Network with Like-Minded Entrepreneurs in Miami with Eric Spofford's Inner Circle", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=PgAhAnHDK6c", description: "" },
-  { id: 9, title: "Featured Video", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=fZwy0-sHjOA", description: "" },
-
-  { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
-  { id: 12, title: "Millionaire at the age of 18! with Dan Dasilva | Podcast in Cars", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=5bcDN46FSnc", description: "" },
-  { id: 13, title: "Ariel Joyeria nos Enseña el lado que todo Negocio Debería tener", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=aF0CRM2Sq_4", description: "" },
-  { id: 14, title: "Experta en Salud Natural: Qué Comer, Cómo Sanar tu Cuerpo y los Hábitos Obligatorios para Vivir Mejor", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=7bK_QNtcCVk", description: "" },
-  { id: 15, title: "¡Haciendo Millones Aprovechando Instagram! con Josue Pena | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=RqUuG24zmc8", description: "" },
-  { id: 16, title: "Hicimos un podcast en una Cybertruck con Tanner Chidester | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=QkQKWvkXr7Q", description: "" },
-  { id: 17, title: "Hicimos un podcast en un Rolls Royce | Con Luke Lintz | Podcast en Carros", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=ZLlAJmzRjVQ", description: "" },
-  { id: 18, title: "BEYOND THE CHARTS: SPENT THE DAY ON A CIGARETTE RACING BOAT IN THE KEYS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d0dR-FXDBwI", description: "" },
-  { id: 19, title: "BEYOND THE CHARTS: PURA VIDA!!!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=GLcesi9gtgQ", description: "" },
-  { id: 20, title: "BEYOND THE CHARTS: ALMOST LOST $50,000", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=d7CLUxeh5Fg", description: "" },
-  { id: 21, title: "BEYOND THE CHARTS: ARIZONA CRAZINESS", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=IUnUixZqKRc", description: "" },
-  { id: 22, title: "FreshPrinceCeo Exotic Car Photoshoot Movie!", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=tqpOij01I4I", description: "" },
-  { id: 23, title: "Was deine Selbstzweifel dir wirklich sagen wollen", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=KGtFjuEukAA", description: "" },
-  { id: 24, title: "1.000 Hate Kommentare bis zum Erfolg", category: "YouTube / Long Format", subcategory: "Podcast", videoUrl: "https://www.youtube.com/watch?v=zn23tp_SLvs", description: "" },
-  { id: 25, title: "How To Optimize Your Amazon PPC Campaigns (In 5 Minutes)", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=LjCxijC2B0M", description: "" },
-  { id: 26, title: "The Amazon LTV Strategy Behind My $1M Subscription Revenue", category: "Talking Head", subcategory: null, videoUrl: "https://www.youtube.com/watch?v=jRj0GXRVVOU", description: "" },
-  { id: 27, title: "Kodak Black - Better Run (Day Is Done)", category: "Production", subcategory: "Music Videos", videoUrl: "https://www.youtube.com/watch?v=D7AzdoBj_rs", description: "" },
-  { id: 28, title: "Real Boston Richey ft. Moneybagg Yo - Certified Dripper 2 (Official Video)", category: "Production", subcategory: "Music Videos", videoUrl: "https://www.youtube.com/watch?v=VHy7bUIKhJA", description: "" },
-];
-
-const PAGE_SIZE = 12;
 
 function getYouTubeId(url: string): string | null {
   const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
@@ -77,15 +51,45 @@ function getPlatform(url: string): "youtube" | "vimeo" | "other" {
 }
 
 export default function JFlowpix() {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeSubcat, setActiveSubcat] = useState("All");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [modalVideo, setModalVideo] = useState<Video | null>(null);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [adminAuthed, setAdminAuthed] = useState(false);
+  const [adminPass, setAdminPass] = useState("");
+  const [adminError, setAdminError] = useState("");
+  const [addForm, setAddForm] = useState({ title: "", category: "YouTube / Long Format", subcategory: "Vlog", video_url: "", description: "" });
+  const [addError, setAddError] = useState("");
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
+  const [adminKeySeq, setAdminKeySeq] = useState("");
 
   const isYoutubeCat = activeCategory === "YouTube / Long Format";
   const isProductionCat = activeCategory === "Production";
 
-  const filteredByCategory = activeCategory === "All" ? VIDEOS : VIDEOS.filter((v) => v.category === activeCategory);
+  async function fetchVideos() {
+    setLoading(true);
+    const { data, error } = await supabase.from("videos").select("*").order("id", { ascending: false });
+    if (!error && data) setVideos(data);
+    setLoading(false);
+  }
+
+  useEffect(() => { fetchVideos(); }, []);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const seq = (adminKeySeq + e.key).slice(-5);
+      setAdminKeySeq(seq);
+      if (seq === "admin") setShowAdmin(true);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [adminKeySeq]);
+
+  const filteredByCategory = activeCategory === "All" ? videos : videos.filter((v) => v.category === activeCategory);
   const filtered = (isYoutubeCat || isProductionCat) && activeSubcat !== "All"
     ? filteredByCategory.filter((v) => v.subcategory === activeSubcat)
     : filteredByCategory;
@@ -97,27 +101,53 @@ export default function JFlowpix() {
     setVisibleCount(PAGE_SIZE);
   }
 
-  function handleCardClick(video: Video) {
-    const platform = getPlatform(video.videoUrl);
-    if (platform === "youtube" || platform === "vimeo") {
-      setModalVideo(video);
-    } else {
-      window.open(video.videoUrl, "_blank");
-    }
+  function handleAdminLogin() {
+    if (adminPass === ADMIN_PASSWORD) { setAdminAuthed(true); setAdminError(""); }
+    else setAdminError("Incorrect password.");
   }
 
-  const categoryCount = (cat: string) => cat === "All" ? VIDEOS.length : VIDEOS.filter((v) => v.category === cat).length;
-  const subcatCount = (sub: string) => sub === "All"
-    ? VIDEOS.filter((v) => v.category === "YouTube / Long Format").length
-    : VIDEOS.filter((v) => v.category === "YouTube / Long Format" && v.subcategory === sub).length;
+  async function handleAddVideo() {
+    const { title, category, subcategory, video_url, description } = addForm;
+    if (!title.trim()) return setAddError("Please enter a title.");
+    if (!video_url.trim()) return setAddError("Please enter a video link.");
+    const { error } = await supabase.from("videos").insert([{
+      title: title.trim(),
+      category,
+      subcategory: category === "YouTube / Long Format" ? subcategory : category === "Production" ? subcategory : null,
+      video_url: video_url.trim(),
+      description: description.trim()
+    }]);
+    if (error) return setAddError("Error adding video. Try again.");
+    setAddForm({ title: "", category: "YouTube / Long Format", subcategory: "Vlog", video_url: "", description: "" });
+    setAddError("");
+    setAddSuccess(true);
+    setTimeout(() => setAddSuccess(false), 3000);
+    fetchVideos();
+  }
 
+  async function handleDelete(id: number) {
+    await supabase.from("videos").delete().eq("id", id);
+    setDeleteConfirm(null);
+    fetchVideos();
+  }
+
+  function handleCardClick(video: Video) {
+    const platform = getPlatform(video.video_url);
+    if (platform === "youtube" || platform === "vimeo") setModalVideo(video);
+    else window.open(video.video_url, "_blank");
+  }
+
+  const categoryCount = (cat: string) => cat === "All" ? videos.length : videos.filter((v) => v.category === cat).length;
+  const subcatCount = (sub: string) => sub === "All"
+    ? videos.filter((v) => v.category === "YouTube / Long Format").length
+    : videos.filter((v) => v.category === "YouTube / Long Format" && v.subcategory === sub).length;
   const productionSubcatCount = (sub: string) => sub === "All"
-    ? VIDEOS.filter((v) => v.category === "Production").length
-    : VIDEOS.filter((v) => v.category === "Production" && v.subcategory === sub).length;
+    ? videos.filter((v) => v.category === "Production").length
+    : videos.filter((v) => v.category === "Production" && v.subcategory === sub).length;
 
   function VideoCard({ video }: { video: Video }) {
-    const thumb = getThumbnail(video.videoUrl);
-    const platform = getPlatform(video.videoUrl);
+    const thumb = getThumbnail(video.video_url);
+    const platform = getPlatform(video.video_url);
     return (
       <div className="video-card" onClick={() => handleCardClick(video)}>
         <div className="thumb-wrap">
@@ -125,9 +155,7 @@ export default function JFlowpix() {
             <img className="thumb" src={thumb} alt={video.title} />
           ) : (
             <div className="thumb-placeholder">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(204,0,0,0.4)" strokeWidth="1.5">
-                <polygon points="5,3 19,12 5,21"/>
-              </svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(204,0,0,0.4)" strokeWidth="1.5"><polygon points="5,3 19,12 5,21"/></svg>
               <span>{video.title}</span>
             </div>
           )}
@@ -216,6 +244,9 @@ export default function JFlowpix() {
         .empty-state { text-align:center; padding:100px 24px; }
         .empty-state p { font-size:13px; margin-top:12px; color:#444; }
 
+        .loading { text-align:center; padding:100px 24px; }
+        .loading p { font-size:13px; color:#444; letter-spacing:2px; text-transform:uppercase; }
+
         .modal-overlay { position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.96); display:flex; align-items:center; justify-content:center; padding:24px; }
         .modal-box { width:100%; max-width:980px; position:relative; }
         .modal-close { position:absolute; top:-44px; right:0; background:none; border:none; color:#666; font-size:11px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; transition:color 0.2s; }
@@ -225,6 +256,46 @@ export default function JFlowpix() {
         .modal-cat { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#CC0000; }
         .modal-subcat { font-size:10px; color:#555; background:rgba(255,255,255,0.04); padding:2px 8px; border-radius:2px; }
         .modal-title-text { font-size:14px; color:#777; }
+
+        .admin-overlay { position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.92); display:flex; align-items:flex-start; justify-content:flex-end; }
+        .admin-panel { width:100%; max-width:560px; height:100vh; overflow-y:auto; background:#111; border-left:1px solid rgba(255,255,255,0.08); padding:40px 32px; }
+        .admin-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; }
+        .admin-header h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; }
+        .admin-close { background:none; border:none; color:#555; font-size:22px; cursor:pointer; }
+        .admin-close:hover { color:#fff; }
+
+        .field-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#555; display:block; margin-bottom:8px; }
+        .field-input, .field-select { width:100%; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:3px; color:#fff; font-size:13px; outline:none; transition:border-color 0.2s; }
+        .field-input:focus, .field-select:focus { border-color:#CC0000; }
+        .field-select option { background:#1a1a1a; }
+        .form-field { margin-bottom:16px; }
+        .field-error { color:#CC0000; font-size:12px; margin-top:6px; }
+        .field-success { color:#22c55e; font-size:12px; margin-top:6px; }
+        .field-hint { font-size:11px; color:#444; margin-top:6px; line-height:1.5; }
+
+        .btn-red { padding:12px 24px; background:#CC0000; border:none; color:#fff; font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; border-radius:3px; transition:background 0.2s; font-weight:600; }
+        .btn-red:hover { background:#aa0000; }
+        .btn-ghost { padding:10px 18px; background:transparent; border:1px solid rgba(255,255,255,0.1); color:#666; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; border-radius:3px; transition:all 0.2s; }
+        .btn-ghost:hover { border-color:#CC0000; color:#fff; }
+        .divider { width:100%; height:1px; background:rgba(255,255,255,0.06); margin:28px 0; }
+
+        .video-list { display:flex; flex-direction:column; gap:8px; }
+        .video-row { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:10px 12px; }
+        .video-row-thumb { width:72px; height:40px; border-radius:2px; flex-shrink:0; background:#0a0a0a; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+        .video-row-thumb img { width:100%; height:100%; object-fit:cover; }
+        .video-row-info { flex:1; min-width:0; }
+        .video-row-title { font-size:12px; font-weight:500; color:#ccc; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .video-row-tags { display:flex; gap:6px; margin-top:3px; align-items:center; }
+        .video-row-cat { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:#CC0000; }
+        .video-row-subcat { font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#444; background:rgba(255,255,255,0.04); padding:1px 5px; border-radius:2px; }
+        .btn-delete { padding:5px 10px; background:transparent; border:1px solid rgba(204,0,0,0.15); color:#666; font-size:10px; cursor:pointer; border-radius:2px; transition:all 0.2s; flex-shrink:0; }
+        .btn-delete:hover { border-color:#CC0000; color:#CC0000; }
+
+        .confirm-box { position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; padding:24px; }
+        .confirm-inner { background:#1a1a1a; border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:32px; max-width:340px; width:100%; text-align:center; }
+        .confirm-inner h4 { font-size:17px; margin-bottom:8px; }
+        .confirm-inner p { font-size:13px; color:#555; margin-bottom:24px; }
+        .confirm-btns { display:flex; gap:10px; justify-content:center; }
 
         .footer { border-top:1px solid rgba(255,255,255,0.06); padding:32px 48px; display:flex; justify-content:space-between; align-items:center; }
         .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; }
@@ -241,6 +312,7 @@ export default function JFlowpix() {
           .grid-section { padding:24px 20px; }
           .video-grid { grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); }
           .footer { padding:20px; flex-direction:column; gap:12px; text-align:center; }
+          .admin-panel { max-width:100%; }
         }
       `}</style>
 
@@ -302,7 +374,9 @@ export default function JFlowpix() {
       )}
 
       <section className="grid-section">
-        {visible.length === 0 ? (
+        {loading ? (
+          <div className="loading"><p>Loading...</p></div>
+        ) : visible.length === 0 ? (
           <div className="empty-state">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             <p>No videos in this category yet.</p>
@@ -333,18 +407,122 @@ export default function JFlowpix() {
         <div className="modal-overlay" onClick={() => setModalVideo(null)}>
           <div className="modal-box" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setModalVideo(null)}>✕ Close</button>
-            <iframe
-              className="modal-frame"
-              src={getEmbedUrl(modalVideo.videoUrl) || ""}
+            <iframe className="modal-frame"
+              src={getEmbedUrl(modalVideo.video_url) || ""}
               allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title={modalVideo.title}
-            />
+              allowFullScreen title={modalVideo.title} />
             <div className="modal-meta">
               <span className="modal-cat">{modalVideo.category}</span>
               {modalVideo.subcategory && <span className="modal-subcat">{modalVideo.subcategory}</span>}
               <span style={{color:"#2a2a2a"}}>—</span>
               <span className="modal-title-text">{modalVideo.title}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showAdmin && (
+        <div className="admin-overlay" onClick={() => setShowAdmin(false)}>
+          <div className="admin-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="admin-header">
+              <h2>Admin Panel</h2>
+              <button className="admin-close" onClick={() => setShowAdmin(false)}>✕</button>
+            </div>
+            {!adminAuthed ? (
+              <>
+                <div className="form-field">
+                  <label className="field-label">Password</label>
+                  <input className="field-input" type="password" placeholder="Enter admin password"
+                    value={adminPass} onChange={(e) => setAdminPass(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleAdminLogin()} />
+                  {adminError && <p className="field-error">{adminError}</p>}
+                </div>
+                <button className="btn-red" onClick={handleAdminLogin}>Unlock →</button>
+              </>
+            ) : (
+              <>
+                <div className="form-field">
+                  <label className="field-label">Video Title *</label>
+                  <input className="field-input" placeholder="e.g. Brand Story Documentary"
+                    value={addForm.title} onChange={(e) => setAddForm({...addForm, title: e.target.value})} />
+                </div>
+                <div className="form-field">
+                  <label className="field-label">Category *</label>
+                  <select className="field-select" value={addForm.category}
+                    onChange={(e) => setAddForm({...addForm, category: e.target.value, subcategory: "Vlog"})}>
+                    {CATEGORIES.slice(1).map((c) => <option key={c}>{c}</option>)}
+                  </select>
+                </div>
+                {addForm.category === "YouTube / Long Format" && (
+                  <div className="form-field">
+                    <label className="field-label">Sub-Type</label>
+                    <select className="field-select" value={addForm.subcategory}
+                      onChange={(e) => setAddForm({...addForm, subcategory: e.target.value})}>
+                      {YOUTUBE_SUBCATEGORIES.slice(1).map((s) => <option key={s}>{s}</option>)}
+                    </select>
+                  </div>
+                )}
+                {addForm.category === "Production" && (
+                  <div className="form-field">
+                    <label className="field-label">Sub-Type</label>
+                    <select className="field-select" value={addForm.subcategory}
+                      onChange={(e) => setAddForm({...addForm, subcategory: e.target.value})}>
+                      {PRODUCTION_SUBCATEGORIES.slice(1).map((s) => <option key={s}>{s}</option>)}
+                    </select>
+                  </div>
+                )}
+                <div className="form-field">
+                  <label className="field-label">Video Link *</label>
+                  <input className="field-input" placeholder="YouTube or Vimeo link"
+                    value={addForm.video_url} onChange={(e) => setAddForm({...addForm, video_url: e.target.value})} />
+                  <p className="field-hint">🎬 YouTube or Vimeo → plays on site · 🔗 Other links → opens in new tab</p>
+                </div>
+                <div className="form-field">
+                  <label className="field-label">Description (optional)</label>
+                  <input className="field-input" placeholder="Short description"
+                    value={addForm.description} onChange={(e) => setAddForm({...addForm, description: e.target.value})} />
+                </div>
+                {addError && <p className="field-error" style={{marginBottom:"12px"}}>{addError}</p>}
+                {addSuccess && <p className="field-success" style={{marginBottom:"12px"}}>✓ Video added!</p>}
+                <button className="btn-red" onClick={handleAddVideo}>Add to Portfolio</button>
+                <div className="divider" />
+                <p style={{fontSize:"11px", letterSpacing:"2px", textTransform:"uppercase", color:"#555", marginBottom:"16px"}}>All Videos ({videos.length})</p>
+                <div className="video-list">
+                  {videos.map((v) => {
+                    const ytId = getYouTubeId(v.video_url);
+                    const platform = getPlatform(v.video_url);
+                    return (
+                      <div key={v.id} className="video-row">
+                        <div className="video-row-thumb">
+                          {ytId ? <img src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`} alt={v.title} />
+                            : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={platform === "vimeo" ? "#1ab7ea" : "#CC0000"} strokeWidth="1.5"><polygon points="5,3 19,12 5,21"/></svg>}
+                        </div>
+                        <div className="video-row-info">
+                          <p className="video-row-title">{v.title}</p>
+                          <div className="video-row-tags">
+                            <span className="video-row-cat">{v.category}</span>
+                            {v.subcategory && <span className="video-row-subcat">{v.subcategory}</span>}
+                          </div>
+                        </div>
+                        <button className="btn-delete" onClick={() => setDeleteConfirm(v.id)}>✕</button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {deleteConfirm !== null && (
+        <div className="confirm-box">
+          <div className="confirm-inner">
+            <h4>Remove this video?</h4>
+            <p>It will be permanently removed.</p>
+            <div className="confirm-btns">
+              <button className="btn-ghost" onClick={() => setDeleteConfirm(null)}>Cancel</button>
+              <button className="btn-red" onClick={() => handleDelete(deleteConfirm)}>Remove</button>
             </div>
           </div>
         </div>
