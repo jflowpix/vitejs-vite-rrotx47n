@@ -22,7 +22,6 @@ const VIDEOS: Video[] = [
   { id: 6, title: "Eric Spofford's Limitless Arena 2024 Keynote", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=lg7n2Qd9QQA", description: "" },
   { id: 7, title: "VIP Access with Birdman: Drake and Lil Wayne Concert", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=qHNAnXuP55A", description: "" },
   { id: 8, title: "Network with Like-Minded Entrepreneurs in Miami with Eric Spofford's Inner Circle", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=PgAhAnHDK6c", description: "" },
-  { id: 29, title: "Event Recap", category: "Event Recaps", subcategory: null, videoUrl: "https://www.instagram.com/reel/DWuKvgVD-Sl/", description: "Instagram Reel" },
   { id: 9, title: "Featured Video", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=fZwy0-sHjOA", description: "" },
 
   { id: 11, title: "Featured Video 3", category: "YouTube / Long Format", subcategory: "Vlog", videoUrl: "https://www.youtube.com/watch?v=pQdiT16ZCDM", description: "" },
